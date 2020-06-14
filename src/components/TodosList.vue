@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import Todo from "./Todo";
 export default {
   name: "TodosList",
@@ -25,15 +26,13 @@ export default {
     Todo
   },
   computed: {
-    todos: function() {
-      return this.$store.state.todos;
-    },
-    completedTodos: function() {
-      return this.$store.getters.completedTodos;
-    },
-    pendingTodos: function() {
-      return this.$store.getters.pendingTodos;
-    }
+    ...mapState({
+      todos: 'todos',
+    }),
+    ...mapGetters({
+      completedTodos: 'completedTodos',
+      pendingTodos: 'pendingTodos'
+    })
   }
 };
 </script>

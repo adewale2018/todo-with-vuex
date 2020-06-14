@@ -5,10 +5,10 @@
         <input
           type="checkbox"
           class="form-check-input py-3"
-          @change="switchDone()"
+          @change="switchDone(todo)"
         />
         <span :class="{ completed: todo.done }">{{ todo.task }}</span>
-        <button class="btn btn-sm btn-danger" @click="deleteTodo()">
+        <button class="btn btn-sm btn-danger" @click="deleteTodo(todo)">
           Remove
         </button>
       </li>
@@ -17,16 +17,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: "Todo",
   props: ["todo"],
   methods: {
-    deleteTodo: function() {
-      this.$store.dispatch("deleteTodo", this.todo);
-    },
-    switchDone: function() {
-      this.$store.dispatch("switchDone", this.todo);
-    }
+    ...mapActions({
+      deleteTodo: 'deleteTodo',
+      switchDone: 'switchDone'
+      
+    })
+    // deleteTodo: function() {
+    //   this.$store.dispatch("deleteTodo", this.todo);
+    // },
+    // switchDone: function() {
+    //   this.$store.dispatch("switchDone", this.todo);
+    // }
   }
 };
 </script>
