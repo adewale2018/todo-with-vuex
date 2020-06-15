@@ -1,4 +1,4 @@
-# approuter-one 
+# simple todo app with vue.js and vuex 
 
 ## Project setup
 ```
@@ -22,3 +22,5 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![todo app image](./src/assets/todo.PNG)
